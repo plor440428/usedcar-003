@@ -75,14 +75,14 @@
         <!-- Top Navigation: Right Menu -->
         <ul class="nav navbar-right navbar-top-links">
             <li>
-                <a href="">
+                <a href="login.php">
                     <i class="fa fa-lock fa-fw"></i> เข้าสู่ระบบ
                 </a>
             </li>
             
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> Phakpoom Ittirattanakomon <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i> menu <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -109,16 +109,16 @@
                         <a href="#s">รถยนต์ของเรา</a>
                     </li>
                     <li>
-                        <a href="#" class="active"><i class="fa fa-car fa-fw"></i> รถทุกประเภท</a>
+                        <a href="car.php " class="active"><i class="fa fa-car fa-fw"></i> รถทุกประเภท</a>
                     </li>
                     <li>
-                        <a href="#" class="active"><i class="fa fa-car fa-fw"></i> รถเก๋ง</a>
+                        <a href="product2.php?cat=1" class="active"><i class="fa fa-car fa-fw"></i> รถเก๋ง</a>
                     </li>
                     <li>
-                        <a href="#" class="active"><i class="fa fa-truck fa-fw"></i> รถกระบะ</a>
+                        <a href="product2.php?cat=2" class="active"><i class="fa fa-truck fa-fw"></i> รถกระบะ</a>
                     </li>
                     <li>
-                        <a href="#" class="active"><i class="fa fa-truck fa-fw"></i> รถตู้</a>
+                        <a href="product2.php?cat=3" class="active"><i class="fa fa-truck fa-fw"></i> รถตู้</a>
                     </li>
                 </ul>
             </div>
@@ -128,6 +128,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <?php
+
                 include("main.php");
             ?>           
 

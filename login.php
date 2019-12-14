@@ -32,6 +32,29 @@
         <![endif]-->
     </head>
     <body>
+    <?php
+        include_once("connect.php");
+        if(isset($_POST["submit"])){
+
+            $username=$conn->real_escape_string($_POST["username"]);
+            $password=md5($conn->real_escape_string($_POST["password"]));
+
+            $sql="SELECT * FROM customers WHERE username='$username' AND password='$password'";
+            $result=$conn->query($sql);
+            print_r($result);
+            if($result->num_rows>0){
+                $row=$result->fetch_array();
+                $_SESSION['id']=$row['id'];
+                $_SESSION['name']=$row['firstname']." ".$row['lastname'];
+                $_SESSION['username']=$row['username'];
+                $_SESSION['email']=$row['emaile'];
+                $_SESSION['active']=$row['active'];
+                
+                header("location: index.php");
+            }
+        }
+    
+    ?>
 
         <div class="container">
             <div class="row">
@@ -44,7 +67,7 @@
                             <form role="form">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                        <input class="form-control" placeholder="username" name="email" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Password" name="password" type="password" value="">
