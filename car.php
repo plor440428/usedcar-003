@@ -7,7 +7,7 @@
 <?php
     if(isset($_SESSION['id'])){
     ?>
-    <div class="col-lg-12">
+    <div class="pull-right">
         <p><a href="Index.php?menu=insert" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Post a car</a></p>
     </div>
     <?php                        

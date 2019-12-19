@@ -26,7 +26,7 @@
 
         move_uploaded_file($_FILES["filepic"]["tmp_name"],"img/".$_FILES["filepic"]["name"]);
 
-        $sqlInsert = "INSERT INTO car (brand,model,modelYear,color,license,province,price,carpic)VALUES('$type','$brand','$model','$modelyear','$color','$license','$province','$price','$filename')";
+        $sqlInsert = "INSERT INTO car(brand,model,modelYear,color,license,province,price,carpic)VALUES('$brand','$model','$modelyear','$color','$license','$province','$price','$filename')";
         $result=$conn->query($sqlInsert);
         if($result){
            echo "<script language='javascript'>alert('Insert Product Complete');</script>"; 
