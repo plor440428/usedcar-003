@@ -14,7 +14,7 @@
         echo "File size exceeds the maximum treshold. <br>";
     }
     else{
-
+        $type = $_POST['txttype'];
         $brand = $_POST['txtbrand'];
         $model = $_POST['txtmodel'];
         $modelyear = $_POST['txtmodelyear'];
@@ -22,11 +22,12 @@
         $license = $_POST['txtlicense'];
         $province = $_POST['txtprovince'];
         $price = $_POST['txtprice'];
+        $postby = $_SESSION['id'];
         $filename = $_FILES['filepic']['name'];
 
-        move_uploaded_file($_FILES["filepic"]["tmp_name"],"img/".$_FILES["filepic"]["name"]);
+        move_uploaded_file($_FILES["filepic"]["tmp_name"],"image/car/".$_FILES["filepic"]["name"]);
 
-        $sqlInsert = "INSERT INTO car (brand,model,modelYear,color,license,province,price,carpic)VALUES('$type','$brand','$model','$modelyear','$color','$license','$province','$price','$filename')";
+        $sqlInsert = "INSERT INTO car (carType,brand,model,modelYear,color,license,province,price,postedBy,postedDate,carpic)VALUES('$type','$brand','$model','$modelyear','$color','$license','$province','$price','$postby',NOW(),'$filename')";
         $result=$conn->query($sqlInsert);
         if($result){
            echo "<script language='javascript'>alert('Insert Product Complete');</script>"; 

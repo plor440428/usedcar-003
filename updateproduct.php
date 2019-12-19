@@ -1,21 +1,25 @@
 <?php 
     session_start();
     include("connect.php");
-    $pid=$pid=$_POST['hdnproduct'];
-    $name=$_POST['txtname'];
-    $description=$_POST['txtdescription'];
-    $price=$_POST['price'];
-    $stock=$_POST['stock'];
-    $sql="UPDATE product SET name='$name',description='$description',price=$price,unitin_stock=$stock WHERE id=$pid";
-   // echo $sql;
+    $pid = $_POST['hdnProductID'];
+    $brand = $_POST['txtbrand'];
+    $model = $_POST['txtmodel'];
+    $modelyear = $_POST['txtmodelyear'];
+    $color = $_POST['txtcolor'];
+    $license = $_POST['txtlicense'];
+    $province = $_POST['txtprovince'];
+    $price = $_POST['txtprice'];
+
+    $sql = "UPDATE car SET brand='$brand',model='$model',modelyear='$modelyear',color='$color',license='$license',province='$province',price='$price' WHERE id =$pid";
+
+    //echo $sql;
+
     $result=$conn->query($sql);
-    if(! $result){
-        echo "Error".$conn->error;
-
-    }
-    else{
-        header("Location:index.php");
-    }
-
-
+        if(!$result){
+            echo "Error : ".$conn->error;
+           
+        }
+        else{
+            header("Location: index.php");
+        }
 ?>

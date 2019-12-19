@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("connect.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +53,7 @@
 </head>
 <body>
 
+
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -69,20 +71,18 @@
 
         <!-- Top Navigation: Left Menu -->
         <ul class="nav navbar-nav navbar-left navbar-top-links">
-            <li><a href="login.php"><i class="fa fa-home fa-fw"></i> หน้าหลัก</a></li>
+            <li><a href="#"><i class="fa fa-home fa-fw"></i> หน้าหลัก</a></li>
         </ul>
 
         <!-- Top Navigation: Right Menu -->
         <ul class="nav navbar-right navbar-top-links">
-            <li>
-                <a href="login.php">
-                    <i class="fa fa-lock fa-fw"></i> เข้าสู่ระบบ
-                </a>
-            </li>
+            <?php
+                    if(isset($_SESSION['id'])){
+                    ?>
             
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> menu <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i> <?php echo $_SESSION['name']; ?><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -90,7 +90,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
             </li>
@@ -99,6 +99,15 @@
                     <i class="fa fa-shopping-cart fa-fa"></i> (0)
                 </a>
             </li>
+            <?php
+                        }
+                        else{
+                    ?>
+                    <li><a href="login.php"><i class="fa fa-lock fa-fw"></i> Login</a></li>
+                    
+                    <?php
+                        }
+                    ?>
         </ul>
 
         <!-- Sidebar -->
@@ -109,16 +118,7 @@
                         <a href="#s">รถยนต์ของเรา</a>
                     </li>
                     <li>
-                        <a href="car.php " class="active"><i class="fa fa-car fa-fw"></i> รถทุกประเภท</a>
-                    </li>
-                    <li>
-                        <a href="product2.php?cat=1" class="active"><i class="fa fa-car fa-fw"></i> รถเก๋ง</a>
-                    </li>
-                    <li>
-                        <a href="product2.php?cat=2" class="active"><i class="fa fa-truck fa-fw"></i> รถกระบะ</a>
-                    </li>
-                    <li>
-                        <a href="product2.php?cat=3" class="active"><i class="fa fa-truck fa-fw"></i> รถตู้</a>
+                        <a href="index.php?menu=allCar" class="active"><i class="fa fa-car fa-fw"></i> รถทุกประเภท</a>
                     </li>
                 </ul>
             </div>
@@ -128,8 +128,34 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <?php
-
-                include("main.php");
+            if(isset($_GET["menu"])){
+                $menu=$_GET["menu"];
+            }
+            else{
+                $menu="";
+            }
+            switch($menu){
+                case "allCar":{
+                    $page="car.php";
+                    break;
+                }
+                case "car":{
+                    $page="ShowCar.php";
+                    break;
+                }
+                case "edit":{
+                    $page="editproduct.php";
+                    break;
+                }
+                case "insert":{
+                    $page="insertPro.php";
+                    break;
+                }
+                default:{
+                    $page="main.php";
+                }
+            }
+                include($page);
             ?>           
 
         </div>

@@ -45,11 +45,8 @@
             if($result->num_rows>0){
                 $row=$result->fetch_array();
                 $_SESSION['id']=$row['id'];
-                $_SESSION['name']=$row['firstname']." ".$row['lastname'];
+                $_SESSION['name']=$row['firsname']." ".$row['lastname'];
                 $_SESSION['username']=$row['username'];
-                $_SESSION['email']=$row['emaile'];
-                $_SESSION['active']=$row['active'];
-                
                 header("location: index.php");
             }
         }
@@ -64,16 +61,16 @@
                             <h3 class="panel-title text-center">Please Sign In</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form  method="POST">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="username" name="email" type="text" autofocus>
+                                        <input class="form-control" placeholder="username" name="username" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                        <input class="form-control" placeholder="Password" name="password" type="password" >
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
-                                    <button class="btn btn-lg btn-success btn-block">Login</button>
+                                    <button type="submit" name="submit" class="btn btn-lg btn-success btn-block">Login</button>
                                 </fieldset>
                             </form>
                         </div>
